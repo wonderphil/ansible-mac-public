@@ -1,0 +1,28 @@
+{
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "all",
+    "explorer.openEditors.visible": 0,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "extensions.ignoreRecommendations": true,
+    "gitlens.historyExplorer.enabled": true,
+    "files.associations": {
+        "*.j2": "yaml",
+        "syslog": "log"
+    },
+    "files.maxMemoryForLargeFilesMB": 16096
+
+}

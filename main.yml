@@ -1,0 +1,174 @@
+---
+- hosts: all
+  become: false
+  connection: local
+  vars:
+    terraform_version: 0.11.13
+  tasks:
+
+    - name: Add custom bashprofile
+      copy:
+        src: bash_profile.sh
+        dest: "~/.bash_profile"
+
+    - name: install homebrew
+      shell: "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+      args:
+        creates: /usr/local/bin/brew
+
+    - name: Install things from brew cask
+      shell: "brew cask install {{ item }}"
+      args:
+        creates: "/Applications/{{ item }}"
+      with_items:
+        - alfred
+        - vlc
+        - iterm2
+        - java
+        - google-chrome
+        - visual-studio-code
+        - virtualbox
+        - virtualbox-extension-pack
+        - vagrant
+        - firefox
+        - google-backup-and-sync
+        - github
+        - sourcetree
+        - charles
+        - spotify
+        - spotify-notifications
+        - beyond-compare
+        - dashlane
+        - dash 
+        - cyberduck
+        - growl-fork
+        - pgadmin4
+        - obs
+        - zoomus
+
+    - name: Install vagrant manager
+      shell: "vagrant plugin install vagrant-hostmanager"
+
+    - name: Install visual studio code extensions
+      shell: "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code --install-extension {{ item }}"
+      with_items:
+        - adelphes.google-search-ext
+        - aliariff.vscode-erb-beautify
+        - asvetliakov.run-current-test
+        - castwide.solargraph
+        - DavidAnson.vscode-markdownlint
+        - erd0s.terraform-autocomplete
+        - euskadi31.json-pretty-printer
+        - floone.varnish-vcl
+        - hangxingliu.vscode-nginx-conf-hint
+        - hbenl.vscode-mocha-test-adapter
+        - hbenl.vscode-test-explorer
+        - HookyQR.minify
+        - Hridoy.rails-snippets
+        - huizhou.githd
+        - jakebathman.nginx-log-highlighter
+        - mauve.terraform
+        - mhutchie.git-graph
+        - mikeburgh.xml-format
+        - mindginative.terraform-snippets
+        - ms-python.python
+        - msjsdiag.debugger-for-chrome
+        - olback.es6-css-minify
+        - PeterJausovec.vscode-docker
+        - rebornix.ruby
+        - run-at-scale.terraform-doc-snippets
+        - shanoor.vscode-nginx
+        - streetsidesoftware.code-spell-checker
+        - thomas-baumgaertner.vcl
+        - vortizhe.simple-ruby-erb
+        - waderyan.gitblame
+        - zovorap.ab-html-formatter
+        - aki77.rails-routes
+        - atefth.ruby-on-rails-snippets
+        - atipugin.rails-partial
+        - aws-scripting-guy.cform
+        - bajdzis.vscode-database
+        - bbenoist.vagrant
+        - Cjay.ruby-and-rails-snippets
+        - davidpallinder.rails-test-runner
+        - donjayamanne.githistory
+        - eamodio.gitlens
+        - formulahendry.docker-explorer
+        - groksrc.ruby
+        - henriiik.docker-linter
+        - keyboardDrummer.vscode-cloudformation
+        - kusumandaru.rails-touchbar
+        - marcostazi.VS-code-vagrantfile
+        - miguel-savignano.ruby-symbols
+        - misogi.ruby-rubocop
+        - ms-azuretools.vscode-docker
+        - ms-mssql.mssql
+        - mtxr.sqltools
+        - noku.rails-run-spec-vscode
+        - p1c2u.docker-compose
+        - redhat.vscode-yaml
+        - rogalmic.bash-debug
+        - shakram02.bash-beautify
+        - shanehofstetter.rails-i18n
+        - shanehofstetter.rails-open-partial
+        - vscoss.vscode-ansible
+        - wingrunr21.vscode-ruby
+
+    - name: Add custom settings for VS Code
+      copy:
+        src: settings.json
+        dest: "~/Library/Application Support/Code/User/settings.json"
+        force: yes
+
+    - name: Install things from brew
+      shell: "brew install {{ item }}"
+      args:
+        creates: "/usr/local/Cellar/{{ item }}"
+      with_items:
+        - docker
+        - python3
+        - wget
+        - postgresql
+        - go 
+        - node 
+        - awscli
+        - bash-completion
+        - htop
+        - aws-shell
+        - rbenv
+        - ruby-build
+        - graphviz
+        - packer
+        - cli53
+        - git
+        - mysql
+        - sqlite
+
+    - name: install git completion
+      shell: "curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+      args:
+        creates: /Users/pdavies/.git-prompt.sh
+  
+    - name: Install Terraform 
+      shell: "wget https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_darwin_amd64.zip && unzip terraform_{{ terraform_version }}_darwin_amd64.zip -d /usr/local/bin/"
+      args:
+        chdir: /tmp
+        creates: /usr/local/bin/terraform
+    
+    - name: source bash profile
+      shell: ". /Users/pdavies/.bash_profile"
+
+    # - name: Install ruby
+    #  shell: "/usr/local/bin/rbenv install 2.5.1"
+    
+    # - name:  ruby
+    #  shell: "/usr/local/bin/rbenv global 2.5.1"
+
+    # - name: install gems
+    #  gem:
+    #    name: rails
+    #    version: 5.2.0 
+    #    state: present
+
+    # - name:  rbenv rehash
+    #  shell: "rbenv rehash"
