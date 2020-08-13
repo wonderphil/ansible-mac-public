@@ -17,6 +17,9 @@ alias brs='bundle exec rails server'
 alias bgn='bundle exec rails generate'
 alias brk='bundle exec rake' 
 alias bi='bundle install'
+alias swagg='rake rswag:specs:swaggerize'
+alias spectest='bundle exec rspec'
+alias rtest="RUBYOPT='-W:no-deprecated' rails test"
 alias edit_creds='rails credentials:edit'
 export EDITOR="code --wait"
 alias aka='echo "
@@ -27,7 +30,7 @@ alias aka='echo "
             bi        bundle install
          "'
 export EDITOR="code --wait"
-alias python='/usr/local/bin/python3'
+#alias python='/usr/local/bin/python3'
 ## Docker
 alias docker_stop_all='docker stop $(docker ps -a -q)'
 alias docker_kill_all='docker kill $(docker ps -q)'
@@ -59,6 +62,8 @@ LIGHT_GRAY="\[\033[0;37m\]"
 GIT_PS1_SHOWDIRTYSTATE=true
 PS1="$LIGHT_GRAY[\$(date +%H:%M) - \u@\h] $RED\w$YELLOW \$(__git_ps1)\n$LIGHT_GRAY\$ "
 
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
@@ -75,9 +80,12 @@ fi
 if [[ -d "$HOME/.okta/bin" && ":$PATH:" != *":$HOME/.okta/bin:"* ]]; then
     PATH="$HOME/.okta/bin:$PATH"
 fi
+export LSCOLORS="exfxcxdxbxegedabagacad" 
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 
-export PATH=/Applications:$PATH
+export PATH=/Applications:~/Library/Python/2.7/bin:$PATH
 
 # export FASTLY_API_KEY=''
+export RUBYOPT='-W:no-deprecated'
 export FASTLY_API_KEY=''
