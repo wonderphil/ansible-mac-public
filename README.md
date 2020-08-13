@@ -16,3 +16,7 @@ See http://shanalikhan.github.io/2015/12/15/Visual-Studio-Code-Sync-Settings.htm
 If you want ruby and rails you can just leave the mail file `main.yml` as is.  I have found sometimes there is issue installing ruby because of openssl, restarting your terminal session and re-running normaly fixes it.
 
 If you dont want ruby or rails then just comment out the tasks.
+
+If you dont want the node installs just comment out the tasks.
+
+** Remember to customise you bash profile to suit you! **

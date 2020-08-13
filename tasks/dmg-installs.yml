@@ -1,0 +1,7 @@
+- include: tasks/install-dmg.yml appName=Docker dmgURL=https://download.docker.com/mac/stable/Docker.dmg
+
+- include: tasks/install-dmg.yml appName=FortiClient dmgURL=https://filestore.fortinet.com/forticlient/downloads/FortiClientVPNOnlineInstaller_6.4.dmg
+
+- include: tasks/install-dmg.yml appName=WhatsApp dmgURL=https://web.whatsapp.com/desktop/mac/files/WhatsApp.dmg
+
+- include: tasks/install-dmg.yml appName=Drawio dmgURL=https://github.com/jgraph/drawio-desktop/releases/download/v13.6.2/draw.io-13.6.2.dmg

@@ -98,12 +98,10 @@
     - name: source bash profile
       shell: ". ~/.bash_profile"
 
-    - include: tasks/install-dmg.yml appName=Docker dmgURL=https://download.docker.com/mac/stable/Docker.dmg
+    - include: tasks/dmg-installs.yml
 
-    - include: tasks/install-dmg.yml appName=FortiClient dmgURL=https://filestore.fortinet.com/forticlient/downloads/FortiClientVPNOnlineInstaller_6.4.dmg
-
-    - include: tasks/install-dmg.yml appName=WhatsApp dmgURL=https://web.whatsapp.com/desktop/mac/files/WhatsApp.dmg
-
+    - include: tasks/ruby.yml version=2.7.1 is_global=1
+    
     - include: tasks/rails.yml
 
-# TO DO: Add node and react
+    - include: tasks/node.yml

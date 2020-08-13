@@ -1,0 +1,26 @@
+
+- name: install nvm
+  shell: "curl -o /tmp/nvm_install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh"
+  args:
+    creates: /tmp/nvm_install.sh
+
+- name: Run a nvm install script
+  script: /tmp/nvm_install.sh
+
+- name: source nvm scripts
+  shell: "source ~/.nvm/nvm.sh"
+
+- name: install stable version of node
+  shell: "source ~/.nvm/nvm.sh && nvm install stable"
+  args:
+    executable: /bin/bash
+
+- name: Set version of node to stable
+  shell: "source ~/.nvm/nvm.sh && nvm use stable"
+  args:
+    executable: /bin/bash
+
+- name: Install "yarn" node.js package globally.
+  npm:
+    name: yarn
+    global: yes
