@@ -1,0 +1,21 @@
+---
+
+- name: install rbenv using homebrew
+  homebrew: name=rbenv state=latest
+
+- name: install ruby-build using homebrew
+  homebrew: name=ruby-build state=latest
+
+- name: Checks if ruby {{ version }} is installed
+  shell: rbenv versions | grep {{ version }}
+  ignore_errors: yes
+  register: ruby_is_installed
+
+- name: install and build ruby {{ version }}
+  command: rbenv install {{ version }}
+  when: ruby_is_installed is failed
+
+# set the global
+- name: set {{ version }} as global ruby
+  command: rbenv global {{ version }}
+  when: is_global
