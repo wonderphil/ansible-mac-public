@@ -5,3 +5,5 @@
 - include: tasks/install-dmg.yml appName=WhatsApp dmgURL=https://web.whatsapp.com/desktop/mac/files/WhatsApp.dmg
 
 - include: tasks/install-dmg.yml appName=Drawio dmgURL=https://github.com/jgraph/drawio-desktop/releases/download/v13.6.2/draw.io-13.6.2.dmg
+
+- include: tasks/install-dmg.yml appName=Java-jre-8 dmgURL=https://javadl.oracle.com/webapps/download/AutoDL?xd_co_f=M2M4OTFkNDUtZWI3My00Y2E4LTk5YTYtZDkxNzUxMzEwMmE1&BundleId=242981_a4634525489241b9a9e1aa73d9e118e6
