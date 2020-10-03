@@ -83,6 +83,7 @@ fi
 export LSCOLORS="exfxcxdxbxegedabagacad" 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
+export HISTCONTROL=ignoreboth:erasedups
 
 export PATH=/Applications:~/Library/Python/2.7/bin:$PATH
 
